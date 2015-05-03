@@ -23,4 +23,16 @@ public class BookService {
     public void createBook(Book book) {
         repository.createBook(book);
     }
+    
+    public void editBook(Book book) {
+    	repository.editBook(book);
+    }
+    
+    public Book getBookById(int id){
+    	return repository.getBookById(id);
+    }
+    
+    public void removeBook(int id){
+    	repository.removeBook(id);
+    }
 }
