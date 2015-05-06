@@ -1,20 +1,36 @@
 package com.ydsworld.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 @Entity
 @Table
 public class Book {
-    @Id
+    
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
  
-    @Column(nullable = false, length = 255)
+
+	@Size(min=5, max=10, message="Your name should be between 5 - 10 characters.")
     private String title;
  
-    @Column(nullable = false, length = 255)
+    @NotEmpty
     private String author;
  
+   /* public Book(int id, String title, String author){
+    	this.id =id;
+    	this.title=title;
+    	this.author=author;
+    }*/
+    
+    
     public int getId() {
         return id;
     }

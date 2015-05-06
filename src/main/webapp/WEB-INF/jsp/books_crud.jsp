@@ -2,6 +2,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
+<%@ taglib uri="/WEB-INF/customTag.tld" prefix="ct" %>
+
 <html>
 <head>
     <title>Book Page</title>
@@ -10,18 +12,25 @@
         .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
         .tg .tg-4eph{background-color:#f9f9f9}
-    </style>
+        .red {background-color: red}
+        .error {color: red; font-weight: bold;}
+    
+    
+</style>
+    
 </head>
 <body>
 <h1>
-    Add a Book
+    Add a Book , <ct:today format="MMMM dd, yyyy" />
 </h1>
- 
+  
 <c:url var="addAction" value="/create-book" ></c:url>
  
-<form:form action="${addAction}" commandName="book">
+ <form:errors />
+ 
+<form:form modelAttribute="book" action="${addAction}" commandName="book" method="POST">
 <table>
-    <c:if test="${!empty book.author}">
+    <c:if test="${!empty book.title}">
     <tr>
         <td>
             <form:label path="id">
@@ -42,6 +51,7 @@
         </td>
         <td>
             <form:input path="title" />
+            <form:errors path="title" cssClass="error"/>
         </td> 
     </tr>
     <tr>
@@ -52,6 +62,7 @@
         </td>
         <td>
             <form:input path="author" />
+            <form:errors path="author" cssClass="error"/>
         </td>
     </tr>
     <tr>
@@ -69,7 +80,7 @@
 </table>  
 </form:form>
 <br>
-<h3>Persons List</h3>
+<h3>Book List</h3>
 <c:if test="${!empty books}">
     <table class="tg">
     <tr>
@@ -90,5 +101,5 @@
     </c:forEach>
     </table>
 </c:if>
-</body>
+ </body>
 </html>
