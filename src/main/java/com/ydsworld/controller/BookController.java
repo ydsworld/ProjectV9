@@ -24,38 +24,21 @@ public class BookController {
     @Autowired
     protected BookService service;
 
-   
-  /*  //list of books with option to add new book
-    @RequestMapping(value = {"/*", "/books"})
-    public String getBooks(Model model) {
-        List<Book> books = service.getBooks();
-        model.addAttribute("books", books);
-        return "books";
-    }*/
-    
-    
-    //list of books with CRUD
-    @RequestMapping(value = {"/*", "/books_crud"}, method=RequestMethod.GET)
+    @RequestMapping(value = {"/books"}, method=RequestMethod.GET)
     public String getBooks_crud(Model model) {
         List<Book> books = service.getBooks();
        model.addAttribute("book",new Book());
         model.addAttribute("books", books);
-        return "books_crud";
+        return "books";
     }
     
-    @RequestMapping(value = "create-book")
-    public String createBookGet(Model model) {
-       model.addAttribute("book", new Book());
-        return "create-book";
-    }
- 
 
     @RequestMapping(value = "create-book", method = RequestMethod.POST)
-    public String createBookPost(@Valid @ModelAttribute("book") Book book, BindingResult result) {
+    public String createBookPost(@Valid Book book, BindingResult result, Model model) {
     	
     	if (result.hasErrors()) {
     		System.out.println(result.toString());
-    		return "redirect:books_crud";
+    		return "books";
     	}
     	
     	if(book.getId() == 0){
@@ -67,21 +50,21 @@ public class BookController {
         }
     	
         
-        return "redirect:books_crud";
+        return "redirect:/books";
     }
     
     @RequestMapping("/edit/{id}")
     public String editBook(@PathVariable("id") int id, Model model){
         model.addAttribute("book", this.service.getBookById(id));
         model.addAttribute("books", this.service.getBooks());
-        return "books_crud";
+        return "books";
     }
     
     @RequestMapping("/remove/{id}")
     public String removeBook(@PathVariable("id") int id){
     	
     	this.service.removeBook(id);
-    	return "redirect:/books_crud";
+    	return "redirect:/books";
     }    
     
   
