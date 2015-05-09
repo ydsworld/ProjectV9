@@ -18,7 +18,7 @@ public class Book {
     private int id;
  
 
-	@Size(min=5, max=50, message="Your name should be between 5 - 10 characters.")
+	@Size(min=3, max=50, message="Your name should be between 5 - 10 characters.")
     private String title;
  
     @NotEmpty
