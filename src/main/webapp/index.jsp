@@ -1,1 +1,1 @@
-<% response.sendRedirect("/ProjectV9/books"); %>
+<% response.sendRedirect("/ProjectV9/booksV1"); %>
