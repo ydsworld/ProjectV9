@@ -114,11 +114,8 @@
 
 			$.ajax({  
 			    type : 'POST',
-			url : '/create-bookAjax',
-			data: {
-	            title : $( "#title" ).val(),
-	            author : $( "#author" ).val()
-	        }, 
+			url : 'create-bookAjax',
+			data: $('#bookForm').serialize(), 
 			success : function(response) {
 			     $('.result').html(response);}
 			});

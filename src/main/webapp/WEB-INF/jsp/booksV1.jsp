@@ -82,6 +82,7 @@
 				            <form:errors path="title" cssClass="error"/>
 				        </td> 
 				    </tr>
+				      <tr><td></td></tr>
 				    <tr>
 				        <td>
 				            <form:label path="author">

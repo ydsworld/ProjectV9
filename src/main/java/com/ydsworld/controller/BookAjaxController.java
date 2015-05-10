@@ -3,6 +3,7 @@ package com.ydsworld.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,10 @@ public class BookAjaxController {
 	
 	@RequestMapping(value = "/create-bookAjax", method=RequestMethod.POST)
 	@ResponseBody
-	public String createBookAjax(@Valid Book book, BindingResult result, Model model,@RequestParam Map<String,String> requestParams){
+	public String createBookAjax(@Valid Book book, BindingResult result, Model model,HttpServletRequest request){
 //model.addAttribute("error","False");
-    	book.setTitle(requestParams.get("title"));
-    	book.setAuthor(requestParams.get("author"));
+    	book.setTitle(request.getParameter("title"));
+    	book.setAuthor(request.getParameter("author"));
 		
     	if (result.hasErrors()) {
     		return "See the error below";
