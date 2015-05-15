@@ -32,7 +32,18 @@
 		<version>1.2.17</version>
 		</dependency>
     	
- 
+ 		<!-- Apache POI -->
+ 		   <dependency>
+ 		  <groupId>org.apache.poi</groupId>
+                 <artifactId>poi</artifactId>
+                 <version>3.9</version>
+          </dependency>
+          <dependency>
+                 <groupId>org.apache.poi</groupId>
+                 <artifactId>poi-ooxml</artifactId>
+                 <version>3.9</version>
+          </dependency>
+
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -44,7 +55,8 @@
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
- 
+
+		
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -85,6 +97,9 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+        
+       
+
     </dependencies>
      
 </project>

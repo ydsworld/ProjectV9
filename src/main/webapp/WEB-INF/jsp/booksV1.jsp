@@ -122,7 +122,7 @@
   </div>
 
 <script type="text/javascript">
-if (("${book.title}".length > 0) || (error == "True")) {
+if (("${book.title}".length > 0) || ("${error}" == "True")) {
     $(window).load(function(){
         $('#myModal').modal('show');
     });
