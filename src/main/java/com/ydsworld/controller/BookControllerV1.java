@@ -23,8 +23,8 @@ public class BookControllerV1 {
 
 	@Autowired
     protected BookService service;
-
-    @RequestMapping(value = {"/booksV1"}, method=RequestMethod.GET)
+	
+	    @RequestMapping(value = {"/booksV1"}, method=RequestMethod.GET)
     public String getBooks_crud(Model model) {
         List<Book> books = service.getBooks();
         model.addAttribute("book",new Book());
